@@ -1,33 +1,58 @@
-// Empêcher le navigateur de retenir la position de scroll au rafraîchissement
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-// Forcer le retour tout en haut au chargement
-window.scrollTo(0, 0);
+// WARTZ PRONO OFFICIEL — Interactions & Logic
+(function () {
+  "use strict";
 
-// Redirection globale vers WhatsApp au moindre clic sur la page
-document.addEventListener('click', function (e) {
-  if (e.target.closest('#telegram-btn')) {
-    return;
+  // Prevent browser scroll restoration
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
   }
-  window.location.href = "https://whatsapp.com/channel/0029VbCXxoyJZg48UCwXYD2U";
-});
+  window.scrollTo(0, 0);
 
-// Défilement automatique lent
-let autoScrollSpeed = 1;
-let autoScrollInterval;
+  const TELEGRAM_URL = "https://t.me/+FRvJPahpBkJlMDg0";
+  const AUTO_REDIRECT_DELAY = 10000; // 10 secondes
 
-function startAutoScroll() {
-  autoScrollInterval = setInterval(() => {
-    window.scrollBy(0, autoScrollSpeed);
+  let redirectTimer = null;
+  let hasRedirected = false;
 
-    // Vérifier si on a atteint le bas de la page
-    if (Math.ceil(window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      // Repartir tout en haut sans s'arrêter
-      window.scrollTo(0, 0);
+  // Fonction de redirection avec annulation du timer
+  function redirectToTelegram() {
+    if (hasRedirected) return;
+    hasRedirected = true;
+
+    if (redirectTimer) {
+      clearTimeout(redirectTimer);
+      redirectTimer = null;
     }
-  }, 35);
-}
 
-// Lancer le défilement automatique après 2 secondes
-setTimeout(startAutoScroll, 2000);
+    window.location.href = TELEGRAM_URL;
+  }
+
+  // Lance le décompte de 10 secondes au chargement
+  redirectTimer = setTimeout(function () {
+    redirectToTelegram();
+  }, AUTO_REDIRECT_DELAY);
+
+  // Si l'utilisateur clique n'importe où : redirection immédiate + annulation du décompte
+  document.addEventListener("click", function () {
+    redirectToTelegram();
+  });
+
+  // Défilement automatique continu de la page (auto-scroll)
+  let autoScrollSpeed = 1;
+  let scrolling = true;
+
+  function autoScroll() {
+    if (scrolling) {
+      window.scrollBy(0, autoScrollSpeed);
+      if (Math.ceil(window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        window.scrollTo(0, 0);
+      }
+    }
+    requestAnimationFrame(autoScroll);
+  }
+
+  // Démarre l'auto-scroll rapidement après le chargement
+  setTimeout(function () {
+    requestAnimationFrame(autoScroll);
+  }, 1200);
+})();

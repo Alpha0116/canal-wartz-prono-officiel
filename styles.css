@@ -6,23 +6,40 @@
 }
 
 body {
-  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-  color: white;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
 }
 
-body::before {
+/* Repeating Background Pattern */
+body:before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='120'%3E%3Ctext x='50%25' y='50%25' font-size='20' font-family='sans-serif' font-weight='bold' fill='rgba(255, 255, 255, 0.05)' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 110 60)'%3EGAINPRO%3C/text%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='120'%3E%3Ctext x='50%25' y='50%25' font-size='20' font-family='sans-serif' font-weight='bold' fill='rgba(255, 255, 255, 0.1)' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 110 60)'%3EGOY55%3C/text%3E%3C/svg%3E");
   background-repeat: repeat;
   z-index: 0;
   pointer-events: none;
+}
+
+/* Giant Center Watermark */
+.watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 20vw;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.08);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
 }
 
 header,
@@ -34,7 +51,7 @@ header,
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 25px 8%;
 }
@@ -43,9 +60,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   margin: 0;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
   white-space: nowrap;
 }
@@ -62,144 +79,29 @@ header {
   color: #ff9800;
 }
 
-.header-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.btn-top {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: white;
-  padding: 18px 40px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 20px;
-  transition: .3s;
-  box-shadow: 0 0 20px #25D366;
-  animation: buttonPulse 2s ease-in-out infinite;
-}
-
-.btn-top:hover {
-  transform: scale(1.05);
-}
-
-.btn-wa {
-  background: #25D366;
-}
-
-.btn-tg {
-  background: #2AABEE;
-}
-
-.btn-top .icon {
-  width: 28px;
-  height: 28px;
-}
-
+/* Hero */
 .hero {
-  padding: 0px 20px 40px 20px;
+  padding: 0 20px 10px;
   text-align: center;
 }
 
-.hero-slider {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto 30px auto;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  background: #142342;
-}
-
-.hero-slider-track {
-  display: flex;
-  width: 300%;
-  animation: slideBanner 8s ease-in-out infinite;
-}
-
-.hero-slider-track img {
-  width: 33.3333%;
-  object-fit: contain;
-  /* Utilise contain pour ne pas couper les images aux formats différents */
-  display: block;
-}
-
-@keyframes slideBanner {
-
-  0%,
-  35% {
-    transform: translateX(0);
-  }
-
-  45%,
-  85% {
-    transform: translateX(-33.3333%);
-  }
-
-  95%,
-  100% {
-    transform: translateX(-66.6666%);
-  }
-}
-
-.badge {
-  display: inline-block;
-  padding: 12px 25px;
-  border: 1px solid rgba(255, 255, 255, .15);
-  border-radius: 50px;
-  color: #d7d7d7;
-  margin-bottom: 30px;
-}
-
-.promo-highlight {
-  color: #ffd700;
-  font-weight: 800;
-  font-size: 1.1em;
-  display: inline-block;
-  animation: pulseText 2s infinite ease-in-out;
-}
-
-@keyframes pulseText {
-
-  0%,
-  100% {
-    transform: scale(1);
-    text-shadow: 0 0 0px rgba(255, 215, 0, 0);
-  }
-
-  50% {
-    transform: scale(1.15);
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-  }
-}
-
-.hero h1 {
-  font-size: 72px;
-  font-weight: 800;
-}
-
-.hero h1 span {
-  color: #00f0ff;
-}
-
-.hero p {
+.pett {
+  font-weight: 400;
+  color: #d0d0d0;
   max-width: 700px;
   margin: 25px auto;
   font-size: 22px;
-  color: #d0d0d0;
+  line-height: 1.4;
 }
 
+/* Bookmakers Pills */
 .bookmakers-pills {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
   max-width: 600px;
-  margin: 0 auto 25px auto;
+  margin: 0 auto 25px;
 }
 
 .pill {
@@ -209,6 +111,11 @@ header {
   font-size: 16px;
   background-color: transparent;
   border: 1px solid;
+  transition: transform 0.2s ease;
+}
+
+.pill:hover {
+  transform: translateY(-2px);
 }
 
 .pill-1xbet {
@@ -236,6 +143,11 @@ header {
   border-color: #00aaff;
 }
 
+.pill-melbet {
+  color: #ff9900;
+  border-color: #ff9900;
+}
+
 .pill-888starz {
   color: #ff3333;
   border-color: #ff3333;
@@ -247,82 +159,124 @@ header {
 }
 
 .pill-afropari {
-  color: #ffd700;
-  border-color: #ffd700;
+  color: gold;
+  border-color: gold;
 }
 
-.pill-melbet {
-  color: #ff9900;
-  border-color: #ff9900;
+/* Promo Badge */
+.badge {
+  display: inline-block;
+  padding: 12px 25px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  color: #d7d7d7;
+  margin-bottom: 30px;
+  background: rgba(20, 35, 66, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 15px;
 }
 
-.stats {
-  margin: 50px auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 1000px;
+.promo-highlight {
+  color: gold;
+  font-weight: 800;
+  font-size: 1.15em;
+  display: inline-block;
+  letter-spacing: 1px;
+  animation: pulseText 2s infinite ease-in-out;
 }
 
-.card {
-  background: #142342;
-  border-radius: 20px;
-  padding: 25px;
-  border: 1px solid rgba(255, 255, 255, .05);
+@keyframes pulseText {
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 0 0 0px rgba(255, 215, 0, 0);
+  }
+  50% {
+    transform: scale(1.15);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
 }
 
-.card h2 {
-  color: #00f0ff;
-  font-size: 38px;
-}
-
-.card span {
-  color: #b8b8b8;
-  font-size: 14px;
-  letter-spacing: 2px;
+/* Telegram Button */
+.telegram-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 720px;
+  margin: 15px auto 0;
+  padding: 0 10px;
 }
 
 .btn {
-  display: inline-block;
-  margin-top: 20px;
-  background: #25D366;
-  padding: 22px 60px;
-  border-radius: 50px;
-  color: white;
-  font-weight: 700;
-  font-size: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+  padding: 28px 45px;
+  border-radius: 70px;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 30px;
   text-decoration: none;
-  box-shadow: 0 0 30px #25D366;
-  transition: .3s;
-  animation: cursorMove 2.5s ease-in-out infinite;
-}
-
-.btn:hover {
-  transform: scale(1.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .btn-telegram {
-  background: #2AABEE;
-  box-shadow: 0 0 30px #2AABEE;
+  background: #2aabee;
+  box-shadow: 0 0 45px #2aabee, 0 10px 25px rgba(0, 0, 0, 0.4);
   animation: telegramPulse 2.5s ease-in-out infinite;
-  animation-delay: 1.25s;
-  /* Pour être désynchronisé avec le bouton WA */
 }
 
 .btn-telegram:hover {
-  background: #229ED9;
+  background: #229ed9;
+  transform: scale(1.04);
 }
 
+.btn-telegram .icon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+@keyframes telegramPulse {
+  0%, 55%, 100% {
+    background: #2aabee;
+    color: #fff;
+    box-shadow: 0 0 30px #2aabee;
+    transform: scale(1);
+  }
+  70% {
+    background: #229ed9;
+    box-shadow: 0 0 15px #229ed9, 0 0 35px #229ed9, 0 0 60px #229ed9;
+    transform: scale(1.04);
+  }
+  80% {
+    background: #1e8cb8;
+    transform: scale(0.98);
+  }
+  90% {
+    transform: scale(1.02);
+  }
+}
+
+/* Results Section */
 .results {
-  padding: 80px 0;
+  padding: 15px 0 50px;
   overflow: hidden;
 }
 
 .results h2 {
-  font-size: 50px;
+  font-size: 44px;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   padding: 0 8%;
+  font-weight: 800;
 }
 
 .results h2 span {
@@ -333,14 +287,14 @@ header {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
   width: 100%;
-  padding: 20px 0;
+  padding: 15px 0;
 }
 
 .marquee-track {
   display: flex;
-  gap: 25px;
+  gap: 20px;
   width: max-content;
 }
 
@@ -353,98 +307,63 @@ header {
 }
 
 .marquee-track img {
-  width: 320px;
+  width: 300px;
   height: auto;
   border-radius: 20px;
-  transition: .3s;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, .4);
+  flex-shrink: 0;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 .marquee-track img:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 @keyframes scrollMarquee {
   0% {
-    transform: translateX(0);
+    transform: translate(0);
   }
-
   100% {
-    transform: translateX(-50%);
+    transform: translate(-50%);
   }
 }
 
+/* Mobile Responsive */
 @media (max-width: 700px) {
-
-  html,
-  body {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-
-  .marquee-container {
-    gap: 15px;
-    padding: 10px 0;
-  }
-
-  .marquee-track {
-    gap: 15px;
-  }
-
-  .marquee-track img {
-    width: 250px;
-    height: auto;
-    border-radius: 20px;
-    flex-shrink: 0;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, .4);
-  }
-
-  .results {
-    padding: 8px 0;
-    overflow: hidden;
-  }
-
   header {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    padding: 20px 15px;
-  }
-
-  .header-buttons {
-    flex-direction: row;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .btn-top {
-    padding: 15px 25px;
-    font-size: 18px;
-    flex: 1;
-    justify-content: center;
-    max-width: 90%;
-    text-align: center;
+    padding: 20px 15px 10px;
   }
 
   .logo {
-    font-size: 18px;
-    justify-content: center;
-    width: 100%;
+    font-size: 20px;
     gap: 8px;
   }
 
   .logo-img {
-    height: 35px;
-    width: 35px;
+    height: 36px;
+    width: 36px;
   }
 
   .hero {
-    padding: 0px 15px 30px 15px;
+    padding: 0 15px 5px;
+  }
+
+  .pett {
+    font-size: 16px;
+    margin: 15px auto 20px;
+    line-height: 1.4;
+  }
+
+  .bookmakers-pills {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .pill {
+    padding: 6px 14px;
+    font-size: 14px;
   }
 
   .badge {
@@ -452,218 +371,41 @@ header {
     width: 100%;
     max-width: 340px;
     margin: 0 auto 25px;
-    white-space: normal;
-    word-break: break-word;
-  }
-
-  .hero h1 {
-    font-size: 40px;
-    line-height: 1.1;
-  }
-
-  .hero h2 {
-    font-size: 12px;
-    line-height: 1.1;
+    padding: 10px 15px;
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   .btn {
-    display: inline-block;
-    margin-top: 20px;
-    background: #25D366;
-    padding: 16px 35px;
-    border-radius: 50px;
-    color: white;
-    font-weight: 700;
-    font-size: 18px;
-    text-decoration: none;
-    box-shadow: 0 0 30px #25D366;
-    transition: .3s;
-    animation: buttonClick 2s ease-in-out infinite;
-  }
-
-  .btn.btn-telegram {
-    background: #2AABEE;
-    box-shadow: 0 0 30px #2AABEE;
-    animation: telegramPulse 2.5s ease-in-out infinite;
-    animation-delay: 1.25s;
-  }
-
-  .hero p {
-    font-size: 13px;
-    margin: 10px auto;
-  }
-
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
     width: 100%;
     max-width: 100%;
-    margin: 30px auto;
+    padding: 22px 20px;
+    font-size: 22px;
+    font-weight: 800;
+    border-radius: 50px;
+    gap: 12px;
   }
 
-  .card {
-    padding: 15px 10px;
+  .btn-telegram .icon {
+    width: 30px;
+    height: 30px;
   }
 
-  .card h2 {
-    font-size: 18px;
+  .results {
+    padding: 10px 0 25px;
   }
 
   .results h2 {
     font-size: 24px;
-    text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
-  .results h2 span {
-    color: #00f0ff;
+  .marquee-track img {
+    width: 240px;
   }
 
-  .card span {
-    font-size: 10px;
-    letter-spacing: 1px;
-  }
-
-  .whatsapp-container {
-    position: relative;
-    display: inline-block;
-  }
-
-  .whatsapp-btn {
-    position: relative;
-    z-index: 2;
-  }
-
-  .cursor {
-    position: absolute;
-    left: 50%;
-    bottom: -60px;
-    transform: translateX(-50%);
-    font-size: 34px;
-    z-index: 3;
-    animation: cursorClick 2s ease-in-out infinite;
-  }
-}
-
-@keyframes scrollGallery {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes cursorClick {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, 70px) scale(.8);
-  }
-
-  30% {
-    opacity: 1;
-    transform: translate(-50%, -35px) scale(1);
-  }
-
-  55% {
-    transform: translate(-50%, -60px) scale(1);
-  }
-
-  60% {
-    transform: translate(-50%, -52px) scale(.82);
-  }
-
-  66% {
-    transform: translate(-50%, -60px) scale(1);
-  }
-
-  85% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(-50%, 70px) scale(.8);
-  }
-}
-
-@keyframes buttonClick {
-
-  0%,
-  54%,
-  100% {
-    transform: scale(1);
-    background: #25D366;
-    box-shadow: 0 0 30px #25D366;
-  }
-
-  60% {
-    transform: scale(.96);
-    background: #1ebd5a;
-    box-shadow: 0 0 15px #25D366, 0 0 40px #25D366, 0 0 80px #25D366;
-  }
-
-  68% {
-    transform: scale(1.05);
-  }
-
-  76% {
-    transform: scale(1);
-  }
-}
-
-@keyframes buttonPulse {
-
-  0%,
-  55%,
-  100% {
-    background: #25D366;
-    color: white;
-    box-shadow: 0 0 30px #25D366;
-    transform: scale(1);
-  }
-
-  70% {
-    background: #1ebd5a;
-    box-shadow: 0 0 15px #1ebd5a, 0 0 35px #1ebd5a, 0 0 60px #1ebd5a;
-    transform: scale(1.05);
-  }
-
-  80% {
-    background: #128c7e;
-    transform: scale(.97);
-  }
-
-  90% {
-    transform: scale(1.03);
-  }
-}
-
-@keyframes telegramPulse {
-
-  0%,
-  55%,
-  100% {
-    background: #2AABEE;
-    color: white;
-    box-shadow: 0 0 30px #2AABEE;
-    transform: scale(1);
-  }
-
-  70% {
-    background: #229ED9;
-    box-shadow: 0 0 15px #229ED9, 0 0 35px #229ED9, 0 0 60px #229ED9;
-    transform: scale(1.05);
-  }
-
-  80% {
-    background: #1e8cb8;
-    transform: scale(.97);
-  }
-
-  90% {
-    transform: scale(1.03);
+  .marquee-container {
+    gap: 15px;
+    padding: 10px 0;
   }
 }

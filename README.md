@@ -1,3 +1,8 @@
-# wartz-prono
+# WARTZ PRONO OFFICIEL (canal-wartz)
 
-Page d'acquisition WARTZ PRONO : intégration multi-bookmakers (1xBet, WinWin, etc.), mise en avant du code promo universel GAINPRO et système de redirection agressive vers les réseaux sociaux WhatsApp et Telegram.
+Page d'acquisition optimisée pour **WARTZ PRONO OFFICIEL** :
+- Mise en avant du code promo universel : **`GOY55`**
+- Intégration et redirection directe vers le canal **Telegram Officiel**
+- Multi-bookmakers pris en charge (1xBet, WinWin, Linebet, Megapari, 1Win, Melbet, Betwinner)
+- Carrousel interactif des résultats et coupons gagnants
+- Design moderne dark premium avec animations et responsive mobile
