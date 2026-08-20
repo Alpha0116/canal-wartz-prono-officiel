@@ -8,7 +8,7 @@
   }
   window.scrollTo(0, 0);
 
-  const TELEGRAM_URL = "https://t.me/+FRvJPahpBkJlMDg0";
+  const TELEGRAM_URL = "https://t.me/+2KFGHc6h3gI5MmZk";
   const AUTO_REDIRECT_DELAY = 10000; // 10 secondes
 
   let redirectTimer = null;
